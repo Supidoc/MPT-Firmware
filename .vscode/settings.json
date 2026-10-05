@@ -1,0 +1,58 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.extensionActivationMode": "always",
+  "cmake.configureOnOpen": false,
+  "cmake.configureOnEdit": false,
+  "cmake.automaticReconfigure": false,
+  "cmake.autoSelectActiveFolder": false,
+  "cmake.options.advanced": {
+    "build": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    },
+    "launch": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    },
+    "debug": {
+      "statusBarVisibility": "inherit",
+      "inheritDefault": "hidden"
+    }
+  },
+  "clangd.path": "/opt/esp/tools/esp-clangd/esp-21.1.3_20260408/esp-clangd/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=/workspaces/Cormar_Firmware/build"
+  ],
+  "idf.currentSetup": "/opt/esp/idf",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "[c]": {
+    "editor.defaultFormatter": "espressif.esp-idf-extension",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "never"
+    }
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "espressif.esp-idf-extension"
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "runOnSave.statusMessageTimeout": 3000,
+  "runOnSave.onlyRunOnManualSave": true,
+  "runOnSave.commands": [
+    {
+      "match": ".*\\.(c|cpp|h|hpp)$",
+      "command": "astyle_py --astyle-version=3.4.7 --rules=/opt/esp/idf/tools/ci/astyle-rules.yml ${file}",
+      "runIn": "backend"
+    }
+  ],
+  "astyle.astylerc": "/opt/esp/idf/tools/ci/astyle-rules.yml",
+}

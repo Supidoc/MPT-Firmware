@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "ESP-IDF",
+            "compilerPath": "/root/.vscode-server/data/User/globalStorage/themastercoder007.lvgl-live-preview/emsdk/emsdk-3.1.50/upstream/emscripten/emcc",
+            "compileCommands": "/workspaces/Cormar_Firmware/build/compile_commands.json",
+            "intelliSenseMode": "gcc-x86",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/root/.vscode-server/data/User/globalStorage/themastercoder007.lvgl-live-preview/lvgl/9.5.0",
+                "/root/.vscode-server/data/User/globalStorage/themastercoder007.lvgl-live-preview/lvgl/9.5.0/src",
+                "/root/.vscode-server/data/User/globalStorage/themastercoder007.lvgl-live-preview/emsdk/emsdk-3.1.50/upstream/emscripten/cache/sysroot/include",
+                "/root/.vscode-server/data/User/globalStorage/themastercoder007.lvgl-live-preview/emsdk/emsdk-3.1.50/upstream/emscripten/cache/sysroot/include/c++/v1"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

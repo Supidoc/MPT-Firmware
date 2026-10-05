@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/espressif/astyle_py.git
+    rev: v1.0.5
+    hooks:
+      - id: astyle_py
+        args: 
+          - --astyle-version=3.4.7
+          - --rules=/opt/esp/idf/tools/ci/astyle-rules.yml
+        exclude: ^build/|^sdkconfig$|^managed_components/

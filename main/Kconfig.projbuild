@@ -1,0 +1,80 @@
+menu "SPI2 Quad SPI Configuration"
+
+    # --- Standard SPI Pins ---
+    config SPI2_SCLK_GPIO
+        int "SPI2 Clock (SCLK) GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for SPI2 clock signal. Set to -1 for default pins.
+
+    config SPI2_CS_GPIO
+        int "SPI2 Chip Select (CS) GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for SPI2 chip select signal. Set to -1 for default pins.
+
+    config SPI2_DATA0_GPIO
+        int "Quad Data Line 0 GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for Quad data line 0. Also serves as MOSI in standard mode.
+
+    config SPI2_DATA1_GPIO
+        int "Quad Data Line 1 GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for Quad data line 1. Also serves as MISO in standard mode.
+
+    config SPI2_DATA2_GPIO
+        int "Quad Data Line 2 GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for Quad data line 2 (Write Protect pin).
+          Required for QIO/QOUT flash modes.
+
+    config SPI2_DATA3_GPIO
+        int "Quad Data Line 3 GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for Quad data line 3 (Hold pin).
+          Required for QIO/QOUT flash modes.
+
+    config LCD_SPI_CLOCK_SPEED_HZ
+        int "LCD SPI Clock Speed (Hz)"
+        default 1000000
+        range 1 5000000
+        help
+          SPI clock speed for the LCD.
+    
+    config LCD_DOUBLE_BUFFERING
+        bool "LCD Double Buffering"
+        default y
+        help
+          Enable double buffering for the LCD.
+
+    config LCD_BUFFER_SIZE
+        int "LCD Buffer Size"
+        default 71000
+        help
+          Size of the buffer used for LCD data transfer.
+
+    config LCD_TASK_STACK_SIZE
+        int "LCD Task Stack Size"
+        default 4096
+        help
+          Stack size for the LCD task.
+    
+    config LCD_TASK_PRIORITY
+        int "LCD Task Priority"
+        default 5
+        help
+          Priority for the LCD task.
+    
+
+endmenu
