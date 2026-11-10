@@ -7,10 +7,6 @@
 #include "freertos/task.h"
 #include "lvgl.h"
 #include "input.h"
-#include "i2c.h"
-#include "bq27441.h"
-
-static bq27441_handle_t s_fuel_gauge;
 
 void app_main(void)
 {
