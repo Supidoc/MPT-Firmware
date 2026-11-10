@@ -1,0 +1,8 @@
+{
+    "mainFile": "./main/gui.c",
+    "dependencies": [],
+    "includePaths": [],
+    "defines": [
+        "DEBUG_MODE=1"
+    ]
+}
