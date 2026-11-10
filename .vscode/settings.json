@@ -23,7 +23,7 @@
   "clangd.arguments": [
     "--background-index",
     "--query-driver=**",
-    "--compile-commands-dir=/workspaces/Cormar_Firmware/build"
+    "--compile-commands-dir=${workspaceFolder}/build"
   ],
   "idf.currentSetup": "/opt/esp/idf",
   "idf.openOcdConfigs": [

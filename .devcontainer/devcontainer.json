@@ -19,7 +19,8 @@
 				"ms-vscode.cpptools-extension-pack",
 				"ms-azuretools.vscode-containers",
 				"pucelle.run-on-save",
-				"themastercoder007.lvgl-live-preview"
+				"themastercoder007.lvgl-live-preview",
+				"ms-vscode.vscode-serial-monitor"
 			]
 		}
 	},

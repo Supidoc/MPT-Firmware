@@ -1,4 +1,30 @@
-menu "SPI2 Quad SPI Configuration"
+menu "MPT Configuration"
+
+  menu "General"
+
+    config DEBUG_LED_GPIO
+        int "Debug LED GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the debug LED signal.
+
+    config DEBUG_LED_ON
+        bool "Debug LED On"
+        default n
+        help
+          Enable the debug LED.
+
+    config BATTERY_DESIGN_CAPACITY
+        int "Battery Design Capacity (mAh)"
+        default 1140
+        range 1 8000
+        help
+          Design capacity of the battery in milliampere-hours (mAh).
+
+  endmenu
+
+  menu "SPI Configuration"
 
     # --- Standard SPI Pins ---
     config SPI2_SCLK_GPIO
@@ -15,42 +41,52 @@ menu "SPI2 Quad SPI Configuration"
         help
           GPIO number for SPI2 chip select signal. Set to -1 for default pins.
 
-    config SPI2_DATA0_GPIO
-        int "Quad Data Line 0 GPIO"
+    config SPI2_MOSI_GPIO
+        int "SPI2 Master Out Slave In (MOSI) GPIO"
         default -1
         range -1 48
         help
-          GPIO number for Quad data line 0. Also serves as MOSI in standard mode.
+          GPIO number for MOSI data line.
 
-    config SPI2_DATA1_GPIO
-        int "Quad Data Line 1 GPIO"
-        default -1
-        range -1 48
+
+
+    config SPI2_MAX_TRANSFER_SIZE
+        int "SPI Max Transfer Size"
+        default 4092
+        range 1 4092
         help
-          GPIO number for Quad data line 1. Also serves as MISO in standard mode.
+          Maximum transfer size for SPI transactions.
+  endmenu
 
-    config SPI2_DATA2_GPIO
-        int "Quad Data Line 2 GPIO"
-        default -1
-        range -1 48
-        help
-          GPIO number for Quad data line 2 (Write Protect pin).
-          Required for QIO/QOUT flash modes.
-
-    config SPI2_DATA3_GPIO
-        int "Quad Data Line 3 GPIO"
-        default -1
-        range -1 48
-        help
-          GPIO number for Quad data line 3 (Hold pin).
-          Required for QIO/QOUT flash modes.
-
+  menu "LCD Configuration"
+      
     config LCD_SPI_CLOCK_SPEED_HZ
         int "LCD SPI Clock Speed (Hz)"
-        default 1000000
-        range 1 5000000
+        default 40000000
+        range 1 40000000
         help
           SPI clock speed for the LCD.
+
+    config LCD_DCX_GPIO
+        int "LCD Data/Command (DCX) GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for LCD data/command signal.
+    
+    config LCD_RST_GPIO
+        int "LCD Reset (RST) GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for LCD reset signal.
+
+    config LCD_BACKLIGHT_GPIO
+        int "LCD Backlight GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for LCD backlight signal.
     
     config LCD_DOUBLE_BUFFERING
         bool "LCD Double Buffering"
@@ -75,6 +111,148 @@ menu "SPI2 Quad SPI Configuration"
         default 5
         help
           Priority for the LCD task.
+
+    config LCD_HEIGHT
+        int "LCD Height"
+        default 142
+        range 1 100000
+        help
+          Height of the LCD in pixels.
+
+    config LCD_WIDTH
+        int "LCD Width"
+        default  428
+        range 1 10000
+        help
+          Width of the LCD in pixels.
+
+    choice LCD_ROTATION
+      prompt "LCD Rotation"
+      default LCD_ROTATION_NONE
+      help
+        Select the rotation of the LCD display.
+
+      config LCD_ROTATION_NONE
+        bool "None"
+
+      config LCD_ROTATION_90
+        bool "90 degrees"
+
+      config LCD_ROTATION_180
+        bool "180 degrees"
+
+      config LCD_ROTATION_270
+        bool "270 degrees"
+
+    endchoice
+
+    config LCD_PARTIAL_BUFFER_DIVIDER
+        int "LCD Partial Buffer Divider"
+        default 10
+        range 1 100
+        help
+          Divider for partial buffer size. The buffer size will be calculated as (LCD_HEIGHT + LCD_WIDTH) * 2 / LCD_PARTIAL_BUFFER_DIVIDER.
+
+  endmenu
+
+  menu "I2C Configuration"
+
+    config I2C_SDA_GPIO
+        int "I2C SDA GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for I2C SDA signal.
     
+    config I2C_SCL_GPIO
+        int "I2C SCL GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for I2C SCL signal.
+    
+    config I2C_CLOCK_SPEED_HZ
+        int "I2C Clock Speed (Hz)"
+        default 100000
+        range 1 400000
+        help
+          I2C clock speed for the I2C bus
+
+    config BQ27441_I2C_ADDRESS
+        hex "BQ27441 I2C Address"
+        default 0x55
+        range 0x08 0x77
+        help
+          7-bit I2C address of the BQ27441-G1 fuel gauge.
+  endmenu
+
+  menu "Theming"
+
+    config THEME_COLOR_PALETTE
+        string "Theme Color Palette"
+        default "LV_PALETTE_DEEP_PURPLE"
+        help
+          Select the color palette for the GUI theme.
+  endmenu
+
+  menu "Input Configuration"
+
+    config INPUT_BUTTON_UP_GPIO
+        int "Input Button Up GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Up".
+
+    config INPUT_BUTTON_DOWN_GPIO
+        int "Input Button Down GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Down".
+
+    config INPUT_BUTTON_LEFT_GPIO
+        int "Input Button Left GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Left".
+
+    config INPUT_BUTTON_RIGHT_GPIO
+        int "Input Button Right GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Right".
+
+    config INPUT_BUTTON_NEXT_GPIO
+        int "Input Button Next GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Next".
+
+    config INPUT_BUTTON_PREV_GPIO
+        int "Input Button Previous GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Previous".
+
+    config INPUT_BUTTON_ENTER_GPIO
+        int "Input Button Enter GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Enter".
+
+    config INPUT_BUTTON_ESCAPE_GPIO
+        int "Input Button Escape GPIO"
+        default -1
+        range -1 48
+        help
+          GPIO number for the input button that represents "Escape".
+
+    endmenu
 
 endmenu

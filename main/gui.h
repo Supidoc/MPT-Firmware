@@ -30,6 +30,11 @@ extern "C" {
  *     Public Function Prototypes    *
  **************************************/
 
+/**
+ * @brief Create the display test screen.
+ */
+void gui_init(void);
+
 #ifdef __cplusplus
 }
 #endif

@@ -44,8 +44,9 @@ esp_err_t lcd_init(void);
  * @brief Get the LVGL display handle
  * This function retrieves the handle to the LVGL display structure. It is used to access the display for rendering operations.
  * @param pDisp Pointer to a pointer that will receive the display handle.
+ * @return true if the display handle was successfully retrieved, false if the pointer is NULL or the display handle is not initialized.
  */
-void lcd_get_display(lv_display_t **pDisp);
+bool lcd_get_display(lv_display_t **pDisp);
 
 #ifdef __cplusplus
 }
